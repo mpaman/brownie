@@ -1,6 +1,0 @@
-# brownie-config.yaml
-networks:
-  holesky:
-    host: https://rpc.testnet.holesky.org  # RPC Holesky Testnet
-    chainid: 315                            # Chain ID ของ Holesky Testnet
-    name: Holesky Testnet

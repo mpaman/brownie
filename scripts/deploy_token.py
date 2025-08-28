@@ -1,20 +1,11 @@
-from brownie import accounts, MockToken, network
+from brownie import accounts, MockToken, network, config
 
 def main():
-    # Load account
-    acct = accounts.load("holesky_deployer")
-
-    # Token parameters
-    name = "MyToken"
-    symbol = "MTK"
-    initial_supply = 1000 * 10**18  # 1000 tokens
-
-    # Deploy contract
-    token = MockToken.deploy(
-        name,
-        symbol,
-        initial_supply,
-        {"from": acct}
-    )
-
-    print(f"✅ Token deployed at: {token.address}")
+    print(f"Active network: {network.show_active()}")
+    # ใช้ private key ของคุณ
+    pk = "PRIVATE_KEY_HERE"
+    acct = accounts.add(pk)
+    
+    # Deploy token
+    token = MockToken.deploy("MyToken", "MTK", 18, 1000 * 10**18, {"from": acct})
+    print("Deployed at:", token.address)
